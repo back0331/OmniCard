@@ -45,12 +45,6 @@
 		<property name="mapperLocations" value="classpath:sql/*.xml" />
 	</bean>
 
-	<!-- <bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" -->
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" id="tilesviewResolver"/>
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" id="tilesConfigurer">
 		<property name="definitions">
@@ -60,6 +54,10 @@
 		</property>
 		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
 	</bean>
+	<!-- <bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver" primary="false">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean> -->
 	
 	
 	<!-- serviceImpl -->

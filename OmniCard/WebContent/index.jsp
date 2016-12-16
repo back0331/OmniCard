@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/OmniCard/css/MainCSS.css">
 <script>
 function register(){
-	location.href="/goRegister.do";
+	location.href="goRegister.do";
 }
 </script>
 </head>
@@ -14,8 +14,8 @@ function register(){
 	<thead><tr><td colspan="2"><h1>Omnicard</h1></td><td></td></tr></thead>
 	<tbody>
 		<tr>
-			<td>아이디 : </td><td><input type="text" name="id"></td>
-			<td>비밀번호 : </td><td><input type="text" name="pw"></td>
+			<td>아이디 : </td><td><input type="text" name="id" value=""></td>
+			<td>비밀번호 : </td><td><input type="text" name="pw" value=""></td>
 		</tr>
 	</tbody>
 </table>

@@ -26,21 +26,12 @@ public class RegisterController {
 	
 	public void setImpl(RegisterImpl impl) {
 		this.impl = impl;
-	}
-
-	private String id;
-	
-	@ModelAttribute
-	public void setId(HttpServletRequest request, @RequestParam("id") String id) {
-		HttpSession session = request.getSession();
-		session.setAttribute("id", id);
-		this.id = (String) session.getAttribute("id");
-	}
+	}	
 	
 	//login using id/pw
 	@RequestMapping("/login.do")
 	public String login(HttpServletRequest request, Model mod,
-			@RequestParam("pw")String pw){
+			@RequestParam("pw")String pw, @RequestParam("id") String id){
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
 		
@@ -55,25 +46,14 @@ public class RegisterController {
 	}
 	
 	//goto register view
-	@RequestMapping("goRegister.do")
-	public String register(HttpServletRequest request){
-		HttpSession session = request.getSession();
+	@RequestMapping("/goRegister.do")
+	public String register(Model mod){
+		mod.addAttribute("command", new MemberCommand());
 		//get addr1, addr2, addr3 and send it to drop_down_menu.
-		session.setAttribute("address", impl.getAddress());
-		return "Register/register";
+		return "register";
 	}
 	
-	//get addr2 as List. send it to drop_down_menu.
-	@RequestMapping("getAddr2.do")
-	public void getAddr2(@RequestParam("addr1")String addr1){
-		
-	}
 	
-	//get addr3 as List. send it to drop_down_menu.
-	@RequestMapping("getAddr3.do")
-	public void getAddr3(@RequestParam("addr2")String addr2){
-		
-	}
 	
 	//register member
 	@RequestMapping("register.do")
@@ -83,12 +63,5 @@ public class RegisterController {
 		HttpSession session = request.getSession();
 		session.setAttribute("check", "check");
 		return "login";
-	}
-
-	//method for ajax/json
-	public void forJSON(ArrayList<String> param){
-		JSONObject object = new JSONObject();
-		object.put("data", param);
-		object.toString();
 	}
 }

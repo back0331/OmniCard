@@ -10,6 +10,12 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/tiles/footer.jsp" />
 	</definition>
+	<definition name="body_layout" template="/WEB-INF/tiles/bodylayout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
 
 	<definition name="main" extends="base_layout">
 		<put-attribute name="title" value="Omnicard" />
@@ -29,5 +35,9 @@
 	<definition name="myschedule" extends="base_layout">
 		<put-attribute name="title" value="Omnicard" />
 		<put-attribute name="body" value="/WEB-INF/MySchedule/readschedule.jsp" />
+	</definition>
+	<definition name="register" extends="body_layout">
+		<put-attribute name="title" value="Omnicard" />
+		<put-attribute name="body" value="/WEB-INF/Register/register.jsp" />
 	</definition>
 </tiles-definitions>

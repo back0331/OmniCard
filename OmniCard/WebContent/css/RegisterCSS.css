@@ -1,1 +1,4 @@
-@CHARSET "EUC-KR";
+@CHARSET "utf-8";
+input:HOVER{
+	box-shadow: 5px 5px 20px grey;
+}
