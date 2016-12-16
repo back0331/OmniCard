@@ -1,0 +1,21 @@
+body{
+	background-image: "/OmniCard/image/index_background.jpg";
+	font-family: serif;
+	font-size: xx-large;
+}
+body form{
+	background-color: white;
+	border-radius: 20px;
+}
+body table thead {
+	border-bottom-color: black; 
+}
+footer .footer_background{
+	
+}
+header .header_head{
+	
+}
+header .header_menu span{
+	
+}

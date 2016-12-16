@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "-//mybatis.org//DTD Mapper 3.0//EN">
+<mapper namespace="myclients">
+
+<select id="getAllClients" parameterType="Map" resultType="command.MemberCommand">
+	SELECT name,id,addr1,addr2,addr3,zip_code1,zip_code2,cel_tel,com_tel,email FROM member m INNER JOIN (SELECT rownum,mem_id,client_id FROM relation WHERE mem_id=#{id}) ON m.id=#{id} WHERE #{pageNum2}>=rownum and rownum>=#{pageNum1}
+</select>
+<select id="getClientsCount" parameterType="String" resultType="int">
+	SELECT count(*) FROM relation WHERE mem_id=#{id}
+</select>
+
+</mapper>

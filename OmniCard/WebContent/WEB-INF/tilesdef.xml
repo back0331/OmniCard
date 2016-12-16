@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="base_layout" template="/WEB-INF/tiles/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="main" extends="base_layout">
+		<put-attribute name="title" value="Omnicard" />
+		<put-attribute name="body" value="/WEB-INF/Mycard/mycard.jsp" />
+	</definition>
+	
+	<definition name="infoupdate" extends="base_layout">
+		<put-attribute name="title" value="Omnicard" />
+		<put-attribute name="body" value="/WEB-INF/MyInfo/infoupdate.jsp" />
+	</definition>
+	
+	<definition name="myclients" extends="base_layout">
+		<put-attribute name="title" value="Omnicard" />
+		<put-attribute name="body" value="/WEB-INF/MyClients/readclient.jsp" />
+	</definition>
+	
+	<definition name="myschedule" extends="base_layout">
+		<put-attribute name="title" value="Omnicard" />
+		<put-attribute name="body" value="/WEB-INF/MySchedule/readschedule.jsp" />
+	</definition>
+</tiles-definitions>

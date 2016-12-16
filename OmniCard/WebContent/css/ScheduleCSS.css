@@ -1,0 +1,27 @@
+@CHARSET "EUC-KR";
+h3{
+	text-align: center;
+}
+body{
+	
+}
+div{
+	border: 1;
+}
+div.calendar{
+	background-image: "/OmniCard/image/calendarimage.jpg";
+}
+div.calhead{
+	width: 180px;
+	height: 50px;
+	border-bottom: thin;
+	border-color: black;
+	text-align: center;
+}
+div.calbody{
+	width: 180px;
+	height: 180px;
+	border-bottom: thin;
+	border-color: black;
+	text-align: center;
+}
