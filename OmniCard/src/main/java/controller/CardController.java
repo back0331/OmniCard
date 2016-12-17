@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import command.CardCommand;
-import command.CardMemoCommand;
+import command.MemoCommand;
 import serviceImpl.CardImpl;
 import serviceImpl.RegisterImpl;
 
@@ -35,7 +35,7 @@ public class CardController {
 	private String id;
 	
 	@ModelAttribute
-	public void setId(HttpServletRequest request) {
+	private void setId(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		this.id = (String) session.getAttribute("id");
 	}
@@ -53,8 +53,8 @@ public class CardController {
 			@RequestParam("towho")String towho,@RequestParam("contents")String contents,
 			@RequestParam("fromwho")String fromwho){
 		ModelAndView mav = new ModelAndView();
-		CardMemoCommand command = new CardMemoCommand();
-		command.setCard_no(Integer.parseInt(card_no));
+		MemoCommand command = new MemoCommand();
+		command.setCard_no(card_no);
 		command.setContents(contents);
 		command.setFromwho(fromwho);
 		command.setTowho(towho);
@@ -78,4 +78,6 @@ public class CardController {
 		mod.addAttribute("cards", registerImpl.getAllCards(id));
 		return "main";
 	}
+	
+	
 }

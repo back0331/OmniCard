@@ -3,7 +3,7 @@
 <mapper namespace="member"><!--로그인에 필요한 맵퍼 파일 -->
 
 <select id="login" parameterType="Map" resultType="String">
-	select id from member where id=#{id} and pw=#{pw}
+	select mem_no from member where id=#{id} and pw=#{pw}
 </select>
 <select id="getAllCards" parameterType="map" resultType="command.CardCommand">
 	select * from card where mem_id=#{id} and rownum>=#{startnum} and #{endnum}>=rownum
@@ -12,7 +12,7 @@
 	select count(*) from card where mem_id=#{id}
 </select>
 <insert id="register_mem" parameterType="command.MemberCommand">
-	insert into member values(member_seq.nextval,#{name},#{id},#{pw},#{addr1},#{addr2},#{zip_code},#{cel_tel},#{com_tel},#{email},sysdate)
+	insert into member values(member_seq.nextval,#{com_no},#{name},#{id},#{pw},#{home_tel},#{cel_tel},#{com_tel},#{email},sysdate)
 </insert>
 <select id="getAddress1" resultType="String">
 	select addr1 from address
@@ -24,7 +24,7 @@
 	select addr3 from address
 </select>
 
-<insert id="sendcard" parameterType="command.CardMemoCommand">
+<insert id="sendcard" parameterType="command.MemoCommand">
 	insert into card_memo values(#{card_no},#{towho},#{fromwho},#{contents},sysdate)
 </insert>
 <insert id="insertcard" parameterType="command.CardCommand">

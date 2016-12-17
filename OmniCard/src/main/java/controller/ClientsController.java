@@ -25,7 +25,7 @@ public class ClientsController {
 	private String id;
 	
 	@ModelAttribute
-	public void setId(String id,HttpServletRequest request) {
+	private void setId(String id,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		this.id = (String) session.getAttribute("id");
 	}

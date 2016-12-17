@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import command.AddressCommand;
 import command.CardCommand;
 import command.MemberCommand;
 import dao.RegisterDAO;
@@ -34,9 +35,10 @@ public class RegisterController {
 			@RequestParam("pw")String pw, @RequestParam("id") String id){
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
-		
-		if(impl.loginService(id, pw)){
-			mod.addAttribute("command", new CardCommand());
+		CardCommand command = new CardCommand(new AddressCommand());
+		command = impl.loginService(id, pw, command);
+		if(command.getMem_no()!=null){
+			mod.addAttribute("command", command);
 			mod.addAttribute("cards", impl.getAllCards(id));
 			mod.addAttribute("count", impl.getCardsCount(id));
 			return "main";

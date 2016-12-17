@@ -3,12 +3,18 @@ package command;
 import java.sql.Timestamp;
 
 public class ScheduleCommand {
-
+	private String mem_no;
 	private String id;
 	private Timestamp from_when;
 	private Timestamp to_when;
 	private String place;
 	private String withwho;
+	public String getMem_no() {
+		return mem_no;
+	}
+	public void setMem_no(String mem_no) {
+		this.mem_no = mem_no;
+	}
 	public String getId() {
 		return id;
 	}

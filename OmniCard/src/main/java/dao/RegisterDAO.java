@@ -20,9 +20,7 @@ public class RegisterDAO extends SqlSessionDaoSupport {
 
 	public String login(Map<String, String> info) {
 		// TODO Auto-generated method stub
-		String id = "";
-		id = getSqlSession().selectOne("member.login", info);
-		return id;
+		return getSqlSession().selectOne("member.login", info);
 	}
 
 	public void register_mem(MemberCommand command) {

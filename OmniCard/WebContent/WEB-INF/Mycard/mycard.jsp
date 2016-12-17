@@ -51,7 +51,7 @@
 	<input type="radio" name="delete" style="float: left;" value="${cards.card_no }">
 	<div class='${cards.form_code }' style="float: left;" onclick="backward('${cards.client_id}', '${cards.card_no }')"><br>
 		<span class="title">${cards.client_name }<br>${cards.com_name }<br>${cards.client_level }</span><br>
-		<span class="body">주소 : ${cards.com_addr1 } ${cards.com_addr2 } ${cards.com_addr3 }<br>${cards.zip_code1 }-${cards.zip_code2 }
+		<span class="body">주소 : ${cards.addr} ${cards.zip } ${cards.addr_desc }
 		<br>홈페이지 주소 : ${cards.web_addr }</span><br>
 		<span class="footer">휴대전화 : ${cards.cel_tel }<br>
 							회사전화 : ${cards.com_tel }<br>
@@ -63,7 +63,7 @@
 	<input type="radio" name="delete" style="float: left;">
 	<div class='${cards.form_code }' style="float: left;" onclick="backward('${cards.client_id}', '${cards.card_no }')"><br>
 		<span class="title">${cards.client_name }<br>${cards.com_name }<br>${cards.client_level }</span><br>
-		<span class="body">주소 : ${cards.com_addr1 } ${cards.com_addr2 } ${cards.com_addr3 }<br>${cards.zip_code1 }-${cards.zip_code2 }
+		<span class="body">주소 : ${cards.addr} ${cards.zip } ${cards.addr_desc }
 		<br>홈페이지 주소 : ${cards.web_addr }</span><br>
 		<span class="footer">휴대전화 : ${cards.cel_tel }<br>
 							회사전화 : ${cards.com_tel }<br>
@@ -76,16 +76,6 @@
 	<div></div>
 </c:forEach>
 <div style="clear: left; margin-left: 68px;" id="paging"></div>
-
-<%-- <c:forEach items="${count }" varStatus="status">
-	<c:if test="${!status.last }">
-		<a href="">${status.count }</a> |
-	</c:if>
-	<c:if test="${status.last }">
-		<a href="">${status.count }</a>
-	</c:if>
-</c:forEach> --%>
-
 <!-- Cards end -->
 
 <!-- The Modal -->

@@ -1,7 +1,7 @@
 package serviceImpl;
 
 import command.CardCommand;
-import command.CardMemoCommand;
+import command.MemoCommand;
 import dao.CardDAO;
 
 public class CardImpl {
@@ -12,7 +12,7 @@ public class CardImpl {
 		this.dao = dao;
 	}
 
-	public int send(int check, CardMemoCommand command) {
+	public int send(int check, MemoCommand command) {
 		// TODO Auto-generated method stub
 		check = dao.send(check, command);
 		return check;

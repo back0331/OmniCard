@@ -21,7 +21,7 @@ public class InfoController {
 	private String id;
 	
 	@ModelAttribute
-	public void setId(HttpServletRequest request) {
+	private void setId(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		this.id = (String) session.getAttribute("id");
 	}

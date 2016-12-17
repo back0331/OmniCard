@@ -3,11 +3,11 @@ package dao;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import command.CardCommand;
-import command.CardMemoCommand;
+import command.MemoCommand;
 
 public class CardDAO extends SqlSessionDaoSupport  {
 
-	public int send(int check, CardMemoCommand command) {
+	public int send(int check, MemoCommand command) {
 		// TODO Auto-generated method stub
 		check = getSqlSession().insert("member.sendcard",command);
 		return check;

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import command.ClientsCommand;
+import command.MemberCommand;
 import dao.ClientsDAO;
 
 public class ClientsImpl {
@@ -15,9 +15,9 @@ public class ClientsImpl {
 	@Resource
 	private ClientsDAO dao;
 
-	public List<ClientsCommand> getAllClients(String id, int pageNum) {
+	public List<MemberCommand> getAllClients(String id, int pageNum) {
 		// TODO Auto-generated method stub
-		List<ClientsCommand> clients = new ArrayList<ClientsCommand>();
+		List<MemberCommand> clients = new ArrayList<MemberCommand>();
 		Map<String, Object> param = new HashMap<String, Object>();
 		
 		param.put("id", id);
