@@ -2,13 +2,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script>
+function search(){
+	var client_name = document.getElementById("client_name").value;
+	
+}
+</script>
+
 <div class="footer_background">
 
 <hr>
 
 <div style="text-align: left">
 <form:form action="insertcard.do" method="post" commandName="command" modelAttribute="command" >
-고객 성함 : <form:input path="client_name" name="client_name" size="5"/>&#8195;&#8195;&#8195;
+고객 성함 : <form:input path="client_name" name="client_name" size="5"/>
+		<img alt="돋보기" src="/OmniCard/image/magnifier.png" onchange="search()">&#8195;&#8195;&#8195;
 명함 디자인 : <form:select path="form_code" name="form_code">
 			<option value="a">A</option>
 			<option value="b">B</option>

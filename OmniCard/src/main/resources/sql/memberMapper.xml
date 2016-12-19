@@ -25,7 +25,7 @@
 </select>
 
 <insert id="sendcard" parameterType="command.MemoCommand">
-	insert into card_memo values(#{card_no},#{towho},#{fromwho},#{contents},sysdate)
+	insert into memo values(#{card_no},#{towho},#{fromwho},#{contents},sysdate)
 </insert>
 <insert id="insertcard" parameterType="command.CardCommand">
 	insert into card(card_no,mem_id,client_name,form_code,com_name,client_level,com_addr1,com_addr2,com_addr3,zip_code1,zip_code2,web_addr,cel_tel,com_tel,email,client_id) values 

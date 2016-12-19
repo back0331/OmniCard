@@ -15,10 +15,10 @@
 		var card_no = document.getElementById('card_no');
 		var modal_header = document.getElementById('modal-header');
 		var modal_footer = document.getElementById('modal-footer');
+		modal.style.display = "block";
 		card_no.value = cardno;
 		modal_header.value = towho;
 		modal_footer.value = fromwho;
-		modal.style.display = "block";
 	};
 	function closebutton(){
 		var modal = document.getElementById('myModal');
@@ -86,14 +86,14 @@
 		<div class="modal-header">
 			<button onclick="closebutton()">X</button>
 			<h1>Memo...........</h1>
-			<h2>To. <input type="text" value="" name="towho" id="modal-header" disabled="disabled"></h2>
+			<h2>To. <input type="text" value="" name="towho" id="modal-header" readonly="readonly"></h2>
 		</div>
 		<!-- Modal content -->
 		<div class="modal-content">
 			<textarea name="contents" cols="20" autofocus="autofocus"></textarea>
 		</div>
 		<div class="modal-footer">
-			<h3>From. <input type="text" value="" name="fromwho" id="modal-footer" disabled="disabled"></h3>
+			<h3>From. <input type="text" value="" name="fromwho" id="modal-footer" readonly="readonly"></h3>
 			<input type="submit" value="send">
 		</div>
 	</form>

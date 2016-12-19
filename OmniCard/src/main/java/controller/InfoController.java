@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import command.AddressCommand;
+import command.CompanyCommand;
 import command.MemberCommand;
 import serviceImpl.InfoImpl;
 
@@ -28,13 +30,15 @@ public class InfoController {
 	
 	@RequestMapping("getMyInfo.do")
 	public String getMyInfo(Model mod){
-		mod.addAttribute("command", impl.getMyInfo(id));
-		return "infoupdate";//tilesdef
+		mod.addAllAttributes(impl.getInfo(id));
+		return "infoupdate";
 	}
 	
 	@RequestMapping("infoupdate.do")
-	public String infoupdate(@ModelAttribute("command")MemberCommand command){
-		impl.infoupdate(id,command);
+	public String infoupdate(@ModelAttribute("info")MemberCommand info,@ModelAttribute("mem_address")AddressCommand mem_address,
+			@ModelAttribute("company")CompanyCommand company,@ModelAttribute("com_address")AddressCommand com_address,Model mod){
+		impl.infoupdate(id,info,mem_address,company,com_address);
+		mod.addAllAttributes(impl.getInfo(id));
 		return "infoupdate";
 	}
 }

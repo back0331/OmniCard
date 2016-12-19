@@ -48,16 +48,12 @@ public class CardController {
 		return "main";
 	}
 	
+	//@RequestParam("card_no")String card_no,
+	//@RequestParam("towho")String towho,@RequestParam("contents")String contents,
+	//@RequestParam("fromwho")String fromwho
 	@RequestMapping(value="send.do", method=RequestMethod.POST)
-	public ModelAndView send(@RequestParam("card_no")String card_no,
-			@RequestParam("towho")String towho,@RequestParam("contents")String contents,
-			@RequestParam("fromwho")String fromwho){
+	public ModelAndView send(@ModelAttribute MemoCommand command){
 		ModelAndView mav = new ModelAndView();
-		MemoCommand command = new MemoCommand();
-		command.setCard_no(card_no);
-		command.setContents(contents);
-		command.setFromwho(fromwho);
-		command.setTowho(towho);
 		System.out.println(command.getTowho());
 		int check = 0;
 		check = impl.send(check, command);

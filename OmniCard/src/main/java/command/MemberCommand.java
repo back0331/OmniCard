@@ -8,8 +8,8 @@ public class MemberCommand {
 	private String name;
 	private String id;
 	private String pw;
-	private long cel_tel;
-	private long com_tel;
+	private String cel_tel;
+	private String com_tel;
 	private String email;
 	private Timestamp reg_date;
 	public String getMem_no() {
@@ -42,16 +42,16 @@ public class MemberCommand {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public long getCel_tel() {
+	public String getCel_tel() {
 		return cel_tel;
 	}
-	public void setCel_tel(long cel_tel) {
+	public void setCel_tel(String cel_tel) {
 		this.cel_tel = cel_tel;
 	}
-	public long getCom_tel() {
+	public String getCom_tel() {
 		return com_tel;
 	}
-	public void setCom_tel(long com_tel) {
+	public void setCom_tel(String com_tel) {
 		this.com_tel = com_tel;
 	}
 	public String getEmail() {
