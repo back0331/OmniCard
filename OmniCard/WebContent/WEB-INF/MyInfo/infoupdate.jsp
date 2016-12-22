@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 <script>
 function insertcom(){
-	var field = document.getElementById('field').style.display;
-	if(field==='none'){
-		field = 'block';
-	}else if(field==='block'){
-		field = 'none';
+	var field = document.getElementById('field');
+	if(field.style.display=='none'){
+		field.style.display = 'block';
+	}else if(field.style.display=='block'){
+		field.style.display = 'none';
 	}
 }
 </script>
@@ -34,8 +34,8 @@ function insertcom(){
 </fieldset>
 <fieldset>
 <legend>주소</legend>
-주소 : <input type="text" name="addr1" value="${mem_address.area_addr1+' '+mem_address.area_addr2+' '+mem_address.area_addr3+' '+mem_address.area_zip+' '+mem_address.area_desc}"> 
-	<input type="text" name="addr1" value="${mem_address.road_addr1+' '+mem_address.road_addr2+' '+mem_address.road_addr3+' '+mem_address.road_zip+' '+mem_address.road_no+' '+mem_address.road_desc}"><br>
+주소 : <input type="text" name="area_addr1" value="${mem_addr.area_addr1}"> <input type="text" name="area_addr2" value="${mem_addr.area_addr2}"> <input type="text" name="area_addr3" value="${mem_addr.area_addr3}"> <input type="text" name="area_zip" value="${mem_addr.area_zip}"> <input type="text" name="area_desc" value="${mem_addr.area_desc}">
+	<input type="text" name="road_addr1" value="${mem_addr.road_addr1}"> <input type="text" name="road_addr2" value="${mem_addr.road_addr2}"> <input type="text" name="road_addr3" value="${mem_addr.road_addr3}"> <input type="text" name="road_no" value="${mem_addr.road_no}"> <input type="text" name="road_desc" value="${mem_addr.road_desc}"><br>
 </fieldset>
 <fieldset>
 <legend>전화번호</legend>
@@ -47,20 +47,19 @@ function insertcom(){
 <input type="text" name="email" value="${info.email }">
 </fieldset>
 
-<c:if test="${company!==null }">
-<input type="checkbox" onchange="insertcom()">회사 정보를 입력/수정하시겠습니까?
+<input type="checkbox" onclick="insertcom()">회사 정보를 입력/수정하시겠습니까?
 <div id="field" style="display: none;">
 <fieldset>
 <legend>회사 정보</legend>
-회사 이름 : <input type="text" name="com_tel" value="${company.com_tel }"><br>
-대표 이름 : <input type="text" name="com_tel" value="${company.com_tel }"><img alt="돋보기" src="/OmniCard/image/magnifier.png" onclick="search()"><sub>검색기능으로 빠르게 정보를 입력해보세요.</sub><br>
+<input type="hidden" name="com_no" value="${company.com_no }">
+회사 이름 : <input type="text" name="com_tel" value="${company.com_name }"><br>
+대표 이름 : <input type="text" name="ceo_name" value="${company.com_tel }"><img alt="돋보기" src="/OmniCard/image/magnifier.png" onclick="search()"><sub>검색기능으로 빠르게 정보를 입력해보세요.</sub><br>
 회사 전화번호 : <input type="text" name="com_tel" value="${company.com_tel }"><br>
-회사 팩스번호 : <input type="text" name="com_tel" value="${company.com_tel }"><br>
-회사 주소 : <input type="text" name="addr1" value="${com_address.area_addr1+' '+com_address.area_addr2+' 'com_address.area_addr3+' 'com_address.area_zip+' '+com_address.area_desc}"> 
-	<input type="text" name="addr1" value="${com_address.area_addr1+' '+com_address.area_addr2+' 'com_address.area_addr3+' 'com_address.area_zip+' '+com_address.area_desc}"><br>
+회사 팩스번호 : <input type="text" name="com_fax" value="${company.com_tel }"><br>
+회사 주소 : <input type="text" name="area_addr1" value="${com_addr.area_addr1}"> <input type="text" name="area_addr2" value="${com_addr.area_addr2}"> <input type="text" name="area_addr3" value="${com_addr.area_addr3}"> <input type="text" name="area_zip" value="${com_addr.area_zip}"> <input type="text" name="area_desc" value="${com_addr.area_desc}">
+	<input type="text" name="road_addr1" value="${com_addr.road_addr1}"> <input type="text" name="road_addr2" value="${com_addr.road_addr2}"> <input type="text" name="road_addr3" value="${com_addr.road_addr3}"> <input type="text" name="road_no" value="${com_addr.road_no}"> <input type="text" name="road_desc" value="${com_addr.road_desc}"><br>
 </fieldset>
 </div>
-</c:if>
 
 <input type="submit" value="수정완료">
 </form>

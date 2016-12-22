@@ -6,14 +6,20 @@
 	select mem_no from member where id=#{id} and pw=#{pw}
 </select>
 <select id="getAllCards" parameterType="map" resultType="command.CardCommand">
-	select * from card where mem_id=#{id} and rownum>=#{startnum} and #{endnum}>=rownum
+	select * from card where id=#{id} and rownum>=#{startnum} and #{endnum}>=rownum
 </select>
 <select id="getCardsCount" parameterType="String" resultType="Integer">
-	select count(*) from card where mem_id=#{id}
+	select count(*) from card where id=#{id}
 </select>
 <insert id="register_mem" parameterType="command.MemberCommand">
 	insert into member values(member_seq.nextval,#{com_no},#{name},#{id},#{pw},#{home_tel},#{cel_tel},#{com_tel},#{email},sysdate)
 </insert>
+<select id="search" parameterType="String" resultType="Map">
+	select name,mem_level,com_name from card where name=#{client_name}
+</select>
+<select id="memcount" parameterType="String" resultType="int">
+	select count(*) from member where name=#{client_name}
+</select>
 <select id="getAddress1" resultType="String">
 	select addr1 from address
 </select>

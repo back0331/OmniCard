@@ -8,17 +8,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	function backward(name, no){
-		var cardno = no;
+		/* var cardno = no;
 		var towho = name;
-		var fromwho = '${id}';
+		var fromwho = '${id}'; */
 		var modal = document.getElementById('myModal');
 		var card_no = document.getElementById('card_no');
 		var modal_header = document.getElementById('modal-header');
 		var modal_footer = document.getElementById('modal-footer');
 		modal.style.display = "block";
-		card_no.value = cardno;
-		modal_header.value = towho;
-		modal_footer.value = fromwho;
+		card_no.value = no;
+		modal_header.value = name;
+		modal_footer.value = '${id}';
 	};
 	function closebutton(){
 		var modal = document.getElementById('myModal');
@@ -76,6 +76,8 @@
 	<div></div>
 </c:forEach>
 <div style="clear: left; margin-left: 68px;" id="paging"></div>
+
+<input type="button" value="선택명함삭제" onclick="del()">
 <!-- Cards end -->
 
 <!-- The Modal -->
@@ -86,14 +88,14 @@
 		<div class="modal-header">
 			<button onclick="closebutton()">X</button>
 			<h1>Memo...........</h1>
-			<h2>To. <input type="text" value="" name="towho" id="modal-header" readonly="readonly"></h2>
+			<h2>To. <input type="text" value="" name="towho" id="modal-header" class="modal_header" readonly="readonly"></h2>
 		</div>
 		<!-- Modal content -->
 		<div class="modal-content">
 			<textarea name="contents" cols="20" autofocus="autofocus"></textarea>
 		</div>
 		<div class="modal-footer">
-			<h3>From. <input type="text" value="" name="fromwho" id="modal-footer" readonly="readonly"></h3>
+			<h3>From. <input type="text" value="" name="fromwho" id="modal-footer" class="modal_footer" readonly="readonly"></h3>
 			<input type="submit" value="send">
 		</div>
 	</form>

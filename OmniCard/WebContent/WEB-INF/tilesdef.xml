@@ -27,7 +27,7 @@
 		<put-attribute name="body" value="/WEB-INF/MyInfo/infoupdate.jsp" />
 	</definition>
 	
-	<definition name="myclients" extends="base_layout">
+	<definition name="readclient" extends="base_layout">
 		<put-attribute name="title" value="Omnicard" />
 		<put-attribute name="body" value="/WEB-INF/MyClients/readclient.jsp" />
 	</definition>

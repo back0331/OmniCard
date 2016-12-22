@@ -8,10 +8,17 @@ public class MemberCommand {
 	private String name;
 	private String id;
 	private String pw;
+	private String home_tel;
 	private String cel_tel;
 	private String com_tel;
 	private String email;
 	private Timestamp reg_date;
+	public String getHome_tel() {
+		return home_tel;
+	}
+	public void setHome_tel(String home_tel) {
+		this.home_tel = home_tel;
+	}
 	public String getMem_no() {
 		return mem_no;
 	}

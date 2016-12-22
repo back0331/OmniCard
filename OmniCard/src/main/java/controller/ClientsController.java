@@ -36,7 +36,7 @@ public class ClientsController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("clients", impl.getAllClients(id, Integer.parseInt(pageNum)));
 		mav.addObject("count", impl.getClientsCount(id));
-		mav.setViewName("myclients");
+		mav.setViewName("readclient");
 		return mav;
 	}
 }

@@ -1,6 +1,10 @@
 package controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -13,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import command.CardCommand;
 import command.MemoCommand;
+import net.sf.json.JSONObject;
 import serviceImpl.CardImpl;
 import serviceImpl.RegisterImpl;
 
@@ -41,7 +46,7 @@ public class CardController {
 	}
 
 	@RequestMapping("mycard.do")
-	public String mycard(Model mod){
+	private String mycard(Model mod){
 		System.out.println(id);
 		mod.addAttribute("command", new CardCommand());
 		mod.addAttribute("cards", registerImpl.getAllCards(id));
@@ -52,7 +57,7 @@ public class CardController {
 	//@RequestParam("towho")String towho,@RequestParam("contents")String contents,
 	//@RequestParam("fromwho")String fromwho
 	@RequestMapping(value="send.do", method=RequestMethod.POST)
-	public ModelAndView send(@ModelAttribute MemoCommand command){
+	private ModelAndView send(@ModelAttribute MemoCommand command){
 		ModelAndView mav = new ModelAndView();
 		System.out.println(command.getTowho());
 		int check = 0;
@@ -68,12 +73,20 @@ public class CardController {
 	}
 	
 	@RequestMapping(value="insertcard.do", method=RequestMethod.POST)
-	public String insertcard(Model mod,@ModelAttribute("command")CardCommand command){
+	private String insertcard(Model mod,@ModelAttribute("command")CardCommand command){
 		impl.insertcard(id, command);
 		mod.addAttribute("command", new CardCommand());
 		mod.addAttribute("cards", registerImpl.getAllCards(id));
 		return "main";
 	}
 	
+	@RequestMapping("search.do")
+	private void search(@RequestParam("client_name")String client_name,HttpServletResponse response) throws IOException{
+		JSONObject object = new JSONObject();
+		PrintWriter writer = response.getWriter();
+		object.put("searchmem", impl.search(client_name));
+		object.put("memcount", impl.memcount(client_name));
+		writer.println(object.toString());
+	}
 	
 }

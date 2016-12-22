@@ -6,8 +6,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-	for(var i=1; ${count}>=i; i++){
-		if(i==${count}){
+	var count = ${count*1};
+	for(var i=1; count>=i; i++){
+		if(i==count){
 			$("#table").append("<a href=myclient.do?pageNum="+i+">"+i+"</a>");
 		}else{
 			$("#table").append("<a href=myclient.do?pageNum="+i+">"+i+"</a> | ");
@@ -23,9 +24,7 @@ $(document).ready(function(){
 	</tr>
 	<c:forEach items="${clients }" var="clients" varStatus="status">
 	<tr>
-		<td>${clients.name }</td><td>${clients.id }</td><td>${clients.addr1 } ${clients.addr2 } ${clients.addr3 }</td>
-		<td>${clients.zip_code1 }-${clients.zip_code2 }</td><td>${clients.cel_tel }</td><td>${clients.com_tel }</td>
-		<td>${clients.email}</td>
+		<td>${clients.name }</td><td>${clients.email}</td><td>${clients.cel_tel }</td><td>${clients.com_tel }</td>
 	</tr>
 	</c:forEach>
 </table>

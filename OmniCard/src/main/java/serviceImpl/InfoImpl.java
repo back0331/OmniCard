@@ -25,16 +25,14 @@ public class InfoImpl {
 		
 		info = dao.getInfo(id, info);
 		mem_address = dao.getMemAddr(info.getMem_no(), mem_address);
-		try{
+		if(info.getCom_no()!=null){
 			company = dao.getCompany(info.getCom_no(), company);
 			com_address = dao.getComAddr(info.getCom_no(), com_address);
-		}catch(NullPointerException e){
-			
 		}
 		
 		param.put("info", info);
-		param.put("mem_address", mem_address);
-		param.put("com_address", com_address);
+		param.put("mem_addr", mem_address);
+		param.put("com_addr", com_address);
 		param.put("company", company);
 		
 		return param;
@@ -45,9 +43,9 @@ public class InfoImpl {
 		// TODO Auto-generated method stub
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("id", id);
-		param.put("mem_address", mem_address);
+		param.put("mem_addr", mem_address);
 		param.put("company", company);
-		param.put("com_address", com_address);
+		param.put("com_addr", com_address);
 		if(info.getCom_no()==null){
 			info.setCom_no("");
 		}
