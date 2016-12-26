@@ -30,24 +30,11 @@ public class CardImpl {
 		dao.insertcard(command);
 	}
 
-	public List<MemberCommand> search(String client_name) {
+	public ArrayList<MemberCommand> search(String client_name) {
 		// TODO Auto-generated method stub
 		List<MemberCommand> list = new ArrayList<>();
 		list = dao.search(client_name, list);
-		return list;
+		return (ArrayList<MemberCommand>) list;
 	}
-
-	public int memcount(String client_name) {
-		// TODO Auto-generated method stub
-		int count = 0;
-		count = dao.memcount(client_name);
-		if(count<11){
-			count=1;
-		}else{
-			count=(count%10)+1;
-		}
-		return count;
-	}
-
 	
 }

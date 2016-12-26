@@ -19,22 +19,16 @@ public class InfoImpl {
 		// TODO Auto-generated method stub
 		MemberCommand info = new MemberCommand();
 		AddressCommand mem_address = new AddressCommand();
-		AddressCommand com_address = new AddressCommand();
 		CompanyCommand company = new CompanyCommand();
 		Map<String, Object> param = new HashMap<String, Object>();
 		
 		info = dao.getInfo(id, info);
-		mem_address = dao.getMemAddr(info.getMem_no(), mem_address);
-		if(info.getCom_no()!=null){
-			company = dao.getCompany(info.getCom_no(), company);
-			com_address = dao.getComAddr(info.getCom_no(), com_address);
-		}
 		
 		param.put("info", info);
-		param.put("mem_addr", mem_address);
-		param.put("com_addr", com_address);
-		param.put("company", company);
-		
+		param.put("mem_addr", dao.getMemAddr(info.getMem_no(), mem_address));
+		if(info.getCom_no()!=null){
+			param.put("company", dao.getCompany(info.getCom_no(), company));
+		}
 		return param;
 	}
 

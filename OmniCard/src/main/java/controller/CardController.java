@@ -85,7 +85,6 @@ public class CardController {
 		JSONObject object = new JSONObject();
 		PrintWriter writer = response.getWriter();
 		object.put("searchmem", impl.search(client_name));
-		object.put("memcount", impl.memcount(client_name));
 		writer.println(object.toString());
 	}
 	

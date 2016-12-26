@@ -88,8 +88,12 @@ body{
     animation-duration: 0.4s
 }
 
+#mymodal{
+	position: absolute;
+	margin-top: 300px;
+}
 /* Modal Content */
-.modal-header {
+.mem-header {
     padding: 20px;
     margin-left: 68.406px;
     margin-right: 68.406px;
@@ -97,7 +101,7 @@ body{
     color: white;
 }
 /* Modal Content */
-.modal-content {
+.mem-content {
     background-color: #fefefe;
     padding: 20px;
     margin-left: 68.406px;
@@ -106,7 +110,7 @@ body{
     width: 80%;
 }
 /* Modal Footer */
-.modal-footer {
+.mem-footer {
     padding: 20px;
     margin-left: 68.406px;
     margin-right: 68.406px;
@@ -114,6 +118,37 @@ body{
     border-bottom: thick;
     border-bottom-color: #000000;
     color: white;
+}
+
+#Modal{
+	position: absolute;
+	margin-top: 300px;
+}
+/* Modal memlist */
+.modal_header {
+    padding: 20px;
+    margin-left: 68.406px;
+    margin-right: 68.406px;
+    background-color: aliceblue;
+    border: 1px solid #888;
+}
+/* Modal Content */
+.modal_content {
+    background-color: aliceblue;
+    padding: 823px;
+    margin-left: 68.406px;
+    margin-right: 68.406px;
+    border: 1px solid #888;
+    width: 80%;
+}
+/* Modal Footer */
+.modal_footer {
+    padding: 20px;
+    margin-left: 68.406px;
+    margin-right: 68.406px;
+    background-color: aliceblue;
+    border-bottom: thick;
+    border: 1px solid #888;
 }
 
 /* The Close Button */

@@ -26,9 +26,4 @@ public class CardDAO extends SqlSessionDaoSupport  {
 		return getSqlSession().selectList("member.search", client_name);
 	}
 
-	public int memcount(String client_name) {
-		// TODO Auto-generated method stub
-		return getSqlSession().selectOne("member.memcount", client_name);
-	}
-
 }

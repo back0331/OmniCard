@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +32,10 @@ public class InfoController {
 	
 	@RequestMapping("getMyInfo.do")
 	public String getMyInfo(Model mod){
-		mod.addAllAttributes(impl.getInfo(id));
+		Map<String, Object> param = impl.getInfo(id);
+		mod.addAttribute("info", param.get("info"));
+		mod.addAttribute("mem_addr", param.get("mem_addr"));
+		mod.addAttribute("company", param.get("company"));
 		return "infoupdate";
 	}
 	

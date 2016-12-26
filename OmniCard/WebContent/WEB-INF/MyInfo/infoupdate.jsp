@@ -6,7 +6,13 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/OmniCard/css/InfoCSS.css">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+$(document).ready(function(){
+	console.log('${info}');
+	console.log('${mem_addr}');
+	console.log('${company}');
+})
 function insertcom(){
 	var field = document.getElementById('field');
 	if(field.style.display=='none'){

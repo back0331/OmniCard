@@ -5,15 +5,11 @@
 	select * from member where id=#{id}
 </select>
 
-<select id="getMemAddr" parameterType="String" resultType="command.AddressCommand">
+<select id="getMemAddr" parameterType="int" resultType="command.AddressCommand">
 	select * from address where mem_no=#{mem_no}
 </select>
 
-<select id="getComAddr" parameterType="String" resultType="command.AddressCommand">
-	select * from address where com_no=#{com_no}
-</select>
-
-<select id="getCompany" parameterType="String" resultType="command.CompanyCommand">
+<select id="getCompany" parameterType="int" resultType="command.CompanyCommand">
 	select * from company where com_no=#{com_no}
 </select>
 

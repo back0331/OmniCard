@@ -13,20 +13,39 @@ function search(){
 		,data:{client_name:document.getElementById("name").value}
 		,dataType:"json"
 		,success:function(args){
-			var source = args.memcount*1;
-			var object;
-			var i = 1;
-			for(i; i<12; i++){
-				console.log(document.getElementById("name").value);
-				console.log(args.searchmem[0]);
-				document.getElementById('memlist').innerHTML="<a href=#>"+args.searchmem[i-1]+"</a><br>";
+			var source;
+			var i = 0;
+			for(i; i<args.searchmem.length; i++){
+				var array = new Array();
+				for(var source in args.searchmem[i]){
+					array.push(source);
+				}
+				document.getElementById('memlist').innerHTML='<a href=# onclick=ins('+array+')>'+args.searchmem[i].name+
+				'</a> '+args.searchmem[i].mem_level+' '+args.searchmem[i].com_name+'<hr>';
 			}
-			object = document.getElementsByClassName("memcount");
-			for(i; i<=source; i++){
-				modal.memcount.innerHTML='<a href=#>'+i+'</a>';
+			for(i=1; i<=source/10; i++){
+				document.getElementById("memcount").innerHTML='<a href=#>'+i+'</a>';
 			}
 		}
 	});
+}
+function closebutton(){
+	var modal = document.getElementById('Modal');
+	modal.style.display = "none";
+}
+window.onclick = function(event) {
+	var modal = document.getElementById('Modal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+function ins(array){
+	console.log("yeah");
+	var i = 1;
+	for(var source in array){
+		document.getElementById(i).value=source;
+		i++;
+	}
 }
 </script>
 
@@ -66,22 +85,19 @@ function search(){
 	<form method="post" action="send.do">
 		<input type="hidden" value="" name="card_no" id="card_no">
 		<!-- Modal header -->
-		<div class="modal-header">
-			<button onclick="closebutton()">X</button>
-			<h1>Memo...........</h1>
-			<h2>To. <input type="text" value="" name="towho" id="modal-header" class="modal_header" readonly="readonly"></h2>
+		<div class="modal_header">
+			<h1>검색결과</h1>
 		</div>
 		<!-- Modal content -->
 		<div class="modal-content">
-			<div class="memlist"></div>
-			<div class="memcount"></div>
+			<div id="memlist"></div>
+			<div id="memcount"></div>
 		</div>
 		<div class="modal-footer">
-			<h3>From. <input type="text" value="" name="fromwho" id="modal-footer" class="modal_footer" readonly="readonly"></h3>
-			<input type="submit" value="send">
 		</div>
 	</form>
 </div>
+
 <!-- The Modal end -->
 
 <div style="text-align: right">

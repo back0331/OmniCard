@@ -20,7 +20,7 @@ $(document).ready(function(){
 <body>
 <table id="table" border="1">
 	<tr>
-		  <td>이름</td><td>주소</td><td>우편번호</td><td>휴대폰번호</td><td>회사전화</td><td>이메일</td>
+		  <td>이름</td><td>이메일</td><td>휴대폰번호</td><td>회사전화</td><td>회사전화</td><td>이메일</td>
 	</tr>
 	<c:forEach items="${clients }" var="clients" varStatus="status">
 	<tr>

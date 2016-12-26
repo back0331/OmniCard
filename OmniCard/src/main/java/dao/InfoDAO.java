@@ -18,19 +18,13 @@ public class InfoDAO extends SqlSessionDaoSupport  {
 
 	public AddressCommand getMemAddr(String mem_no, AddressCommand mem_address) {
 		// TODO Auto-generated method stub
-		mem_address = getSqlSession().selectOne("info.getMemAddr", mem_no);
-		return null;
-	}
-
-	public AddressCommand getComAddr(String com_no, AddressCommand com_address) {
-		// TODO Auto-generated method stub
-		com_address = getSqlSession().selectOne("info.getComAddr", com_no);
+		mem_address = getSqlSession().selectOne("info.getMemAddr", Integer.parseInt(mem_no));
 		return null;
 	}
 
 	public CompanyCommand getCompany(String com_no, CompanyCommand company) {
 		// TODO Auto-generated method stub
-		company = getSqlSession().selectOne("info.getCompany", com_no);
+		company = getSqlSession().selectOne("info.getCompany", Integer.parseInt(com_no));
 		return null;
 	}
 
