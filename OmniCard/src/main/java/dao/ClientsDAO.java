@@ -5,11 +5,12 @@ import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import command.ClientsCommand;
 import command.MemberCommand;
 
 public class ClientsDAO extends SqlSessionDaoSupport  {
 
-	public List<MemberCommand> getAllClients(List<MemberCommand> clients, Map<String, Object> param) {
+	public List<ClientsCommand> getAllClients(List<ClientsCommand> clients, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		clients = getSqlSession().selectList("myclients.getAllClients", param);
 		return clients;

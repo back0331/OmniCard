@@ -35,7 +35,6 @@ public class ClientsController {
 			@RequestParam(value="pageNum", defaultValue="1")String pageNum){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("clients", impl.getAllClients(id, Integer.parseInt(pageNum)));
-		mav.addObject("count", impl.getClientsCount(id));
 		mav.setViewName("readclient");
 		return mav;
 	}
