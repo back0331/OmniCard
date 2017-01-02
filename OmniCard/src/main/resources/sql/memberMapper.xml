@@ -6,10 +6,13 @@
 	select mem_no from member where id=#{id} and pw=#{pw}
 </select>
 <select id="getAllCards" parameterType="map" resultType="command.CardCommand">
-	select * from card where id=#{id} and rownum>=#{startnum} and #{endnum}>=rownum
+	select rownum,r.card_no,c.id,c.com_no,c.name,c.form_code,c.com_name,c.mem_level,
+	c.web_addr,c.cel_tel,c.com_tel,c.email,c.addr,c.zip,c.addr_desc 
+	from relation r inner join card c on r.card_no=c.card_no 
+	where r.id=#{id} and r.card_no is not null and rownum>=#{startnum} and #{endnum}>=rownum
 </select>
 <select id="getCardsCount" parameterType="String" resultType="Integer">
-	select count(*) from card where id=#{id}
+	select count(*) from card where owning=#{id}
 </select>
 <insert id="register_mem" parameterType="command.MemberCommand">
 	insert into member values(member_seq.nextval,#{com_no},#{name},#{id},#{pw},#{home_tel},#{cel_tel},#{com_tel},#{email},sysdate)
@@ -30,9 +33,14 @@
 <insert id="sendcard" parameterType="command.MemoCommand">
 	insert into memo values(#{card_no},#{towho},#{fromwho},#{contents},sysdate)
 </insert>
-<insert id="insertcard" parameterType="command.CardCommand">
-	insert into card(card_no,mem_id,client_name,form_code,com_name,client_level,com_addr1,com_addr2,com_addr3,zip_code1,zip_code2,web_addr,cel_tel,com_tel,email,client_id) values 
-	(card_seq.nextval,#{mem_id},#{client_name},#{form_code},#{com_name},#{client_level},#{com_addr1},#{com_addr2},#{com_addr3},#{zip_code1},#{zip_code2},#{web_addr},#{cel_tel},#{com_tel},#{email},#{client_id})
+<insert id="insertcard1" parameterType="command.CardCommand">
+	insert into card values 
+	(card_seq.nextval,#{id},#{com_no},#{name},#{form_code},
+	#{com_name},#{mem_level},#{web_addr},#{cel_tel},#{com_tel},
+	#{email},#{addr},#{zip},#{addr_desc})
 </insert>
+<update id="insertcard2" parameterType="Map">
+	update card set owning=#{id} where id=#{cardid}
+</update>
 
 </mapper>

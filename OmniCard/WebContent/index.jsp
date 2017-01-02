@@ -6,9 +6,15 @@
 function register(){
 	location.href="goRegister.do";
 }
+function rollback(){
+	var result="${result}";
+	if(result.length!=0){
+		alert(result);
+	}
+}
 </script>
 </head>
-<body background="/OmniCard/image/index_background.jpg">
+<body background="/OmniCard/image/index_background.jpg" onload="rollback()">
 <form action="login.do" method="post" class="loginForm">
 <table>
 	<thead><tr><td colspan="2"><h1>Omnicard</h1></td><td></td></tr></thead>

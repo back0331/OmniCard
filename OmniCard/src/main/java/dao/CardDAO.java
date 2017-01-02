@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -16,9 +17,13 @@ public class CardDAO extends SqlSessionDaoSupport  {
 		return check;
 	}
 
-	public void insertcard(CardCommand command) {
+	public void insertcard1(CardCommand command) {
 		// TODO Auto-generated method stub
-		getSqlSession().insert("member.insertcard",command);
+		getSqlSession().insert("member.insertcard1",command);
+	}
+	
+	public void insertcard2(Map<String, String> param){
+		getSqlSession().update("member.insertcard2", param);
 	}
 
 	public List<MemberCommand> search(String client_name, List<MemberCommand> list) {

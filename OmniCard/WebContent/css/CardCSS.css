@@ -1,9 +1,6 @@
 div{
 	transition: transform 1s ease;
 }
-body{
-	
-}
 .card_no{
 	float: left;
 }
@@ -19,13 +16,13 @@ body{
 	content: url("/OmniCard/image/backward.jpg");
 }
 
-.a, .title{
-	text-align: left;
+.a:first_child{
+	text-align: center;
 }
-.a, .body{
+.a:first_child+span{
 	text-align: right;
 }
-.a, .footer{
+.a:first_child+span+span{
 	text-align: center;
 }
 
@@ -40,13 +37,13 @@ body{
 	transform: rotateY(179deg);
 	content: url("/OmniCard/image/backward.jpg");
 }
-.b, .title{
+.b .title{
 	text-align: left;
 }
-.b, .body{
+.b .body{
 	text-align: right;
 }
-.b, .footer{
+.b .footer{
 	text-align: center;
 }
 
@@ -58,13 +55,13 @@ body{
 	transform: rotateY(179deg);
 	content: url("/OmniCard/image/backward.jpg");
 }
-.c, .title{
+.c .title{
 	
 }
-.c, .body{
+.c .body{
 	
 }
-.c, .footer{
+.c .footer{
 	
 }
 
@@ -88,12 +85,8 @@ body{
     animation-duration: 0.4s
 }
 
-#mymodal{
-	position: absolute;
-	margin-top: 300px;
-}
 /* Modal Content */
-.mem-header {
+.mem_header {
     padding: 20px;
     margin-left: 68.406px;
     margin-right: 68.406px;
@@ -101,54 +94,50 @@ body{
     color: white;
 }
 /* Modal Content */
-.mem-content {
-    background-color: #fefefe;
-    padding: 20px;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    border: 1px solid #888;
-    width: 80%;
-}
-/* Modal Footer */
-.mem-footer {
-    padding: 20px;
+.mem_content {
+    border: 20px;
     margin-left: 68.406px;
     margin-right: 68.406px;
     background-color: #5cb85c;
+}
+/* Modal Footer */
+.mem_footer {
+    padding: 20px;
+    background-color: #5cb85c;
+    margin-left: 68.406px;
+    margin-right: 68.406px;
     border-bottom: thick;
     border-bottom-color: #000000;
     color: white;
 }
 
-#Modal{
-	position: absolute;
-	margin-top: 300px;
-}
 /* Modal memlist */
 .modal_header {
     padding: 20px;
+    width: 50%;
     margin-left: 68.406px;
     margin-right: 68.406px;
-    background-color: aliceblue;
     border: 1px solid #888;
+    background-color: white;
 }
 /* Modal Content */
 .modal_content {
-    background-color: aliceblue;
-    padding: 823px;
+	border: 20px;
+	width: 53%;
     margin-left: 68.406px;
     margin-right: 68.406px;
     border: 1px solid #888;
-    width: 80%;
+    background-color: white;
 }
 /* Modal Footer */
 .modal_footer {
     padding: 20px;
+    width: 50%;
     margin-left: 68.406px;
     margin-right: 68.406px;
-    background-color: aliceblue;
     border-bottom: thick;
     border: 1px solid #888;
+    background-color: white;
 }
 
 /* The Close Button */

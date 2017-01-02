@@ -45,7 +45,7 @@ public class CardController {
 		this.id = (String) session.getAttribute("id");
 	}
 
-	@RequestMapping("mycard.do")
+	@RequestMapping("cardlist.do")
 	private String mycard(Model mod){
 		System.out.println(id);
 		mod.addAttribute("command", new CardCommand());
@@ -53,9 +53,6 @@ public class CardController {
 		return "main";
 	}
 	
-	//@RequestParam("card_no")String card_no,
-	//@RequestParam("towho")String towho,@RequestParam("contents")String contents,
-	//@RequestParam("fromwho")String fromwho
 	@RequestMapping(value="send.do", method=RequestMethod.POST)
 	private ModelAndView send(@ModelAttribute MemoCommand command){
 		ModelAndView mav = new ModelAndView();
@@ -74,7 +71,7 @@ public class CardController {
 	
 	@RequestMapping(value="insertcard.do", method=RequestMethod.POST)
 	private String insertcard(Model mod,@ModelAttribute("command")CardCommand command){
-		impl.insertcard(id, command);
+		impl.insertcard(command, id);
 		mod.addAttribute("command", new CardCommand());
 		mod.addAttribute("cards", registerImpl.getAllCards(id));
 		return "main";

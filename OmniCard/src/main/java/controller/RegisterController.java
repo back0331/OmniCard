@@ -35,16 +35,19 @@ public class RegisterController {
 			@RequestParam("pw")String pw, @RequestParam("id") String id){
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
-		CardCommand command = new CardCommand(new AddressCommand());
+		MemberCommand command = new MemberCommand();
 		command = impl.loginService(id, pw, command);
-		if(command.getMem_no()!=null){
-			mod.addAttribute("command", command);
-			mod.addAttribute("cards", impl.getAllCards(id));
-			mod.addAttribute("count", impl.getCardsCount(id));
-			return "main";
-		}else{
-			return "login";
+		try{
+			if((command.getMem_no())!=null){
+				mod.addAttribute("command", command);
+				mod.addAttribute("cards", impl.getAllCards(id));
+				//mod.addAttribute("count", impl.getCardsCount(id));
+				return "main";
+			}
+		}catch(NullPointerException e){
+			mod.addAttribute("result", "아이디 혹은 비밀번호가 틀리셨습니다.");
 		}
+		return "index";
 	}
 	
 	//goto register view

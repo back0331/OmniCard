@@ -19,13 +19,13 @@ public class RegisterImpl implements RegisterService{
 		this.dao = dao;
 	}
 	
-	public CardCommand loginService(String id, String pw, CardCommand command) {
+	public MemberCommand loginService(String id, String pw, MemberCommand command) {
 		// TODO Auto-generated method stub
 		Map<String, String> info = new HashMap<String, String>();
 		info.put("id", id);
 		info.put("pw", pw);
 		command.setMem_no(dao.login(info));
-		command.setMem_id(id);
+		command.setId(id);
 		if(command.getMem_no()!=null){
 			return command;
 		}else{

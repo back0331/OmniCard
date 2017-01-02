@@ -1,7 +1,9 @@
 package serviceImpl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 import command.CardCommand;
@@ -23,11 +25,13 @@ public class CardImpl {
 		return check;
 	}
 
-	public void insertcard(String id, CardCommand command) {
+	public void insertcard(CardCommand command, String id) {
 		// TODO Auto-generated method stub
-		command.setMem_id(id);
-		command.setClient_id("");
-		dao.insertcard(command);
+		dao.insertcard1(command);
+		Map<String, String> param = new HashMap<>();
+		param.put("cardid", command.getId());
+		param.put("id", id);
+		dao.insertcard2(param);
 	}
 
 	public ArrayList<MemberCommand> search(String client_name) {

@@ -8,17 +8,17 @@ body{
 div{
 	border: 1;
 }
-div.calendar{
+div .calendar{
 	background-image: "/OmniCard/image/calendarimage.jpg";
 }
-div.calhead{
+div .calhead{
 	width: 180px;
 	height: 50px;
 	border-bottom: thin;
 	border-color: black;
 	text-align: center;
 }
-div.calbody{
+div .calbody{
 	width: 180px;
 	height: 180px;
 	border-bottom: thin;

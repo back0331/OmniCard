@@ -15,6 +15,8 @@
 		}
 	}
 }); */
+var clients = '${clients}';
+console.log(clients.length);
 </script>
 </head>
 <body>
@@ -33,6 +35,7 @@
 		<td>${clients.road_addr1 } ${clients.road_addr2} ${clients.road_addr3} ${clients.road_no} ${clients.road_desc}</td>
 	</tr>
 	</c:forEach>
+	
 </table>
 </body>
 </html>
