@@ -34,11 +34,24 @@ public class CardImpl {
 		dao.insertcard2(param);
 	}
 
-	public ArrayList<MemberCommand> search(String client_name) {
+	public List<MemberCommand> search(String client_name) {
 		// TODO Auto-generated method stub
 		List<MemberCommand> list = new ArrayList<>();
 		list = dao.search(client_name, list);
-		return (ArrayList<MemberCommand>) list;
+		return list;
+	}
+
+	public CardCommand getMyCard(String id, CardCommand list) {
+		// TODO Auto-generated method stub
+		list = new CardCommand();
+		list = dao.getMyCard(id);
+		return list;
+	}
+
+	public void updateMyCard(String id, CardCommand command) {
+		// TODO Auto-generated method stub
+		command.setId(id);
+		dao.updateMyCard(command);
 	}
 	
 }

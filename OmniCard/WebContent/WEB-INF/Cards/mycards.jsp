@@ -32,10 +32,6 @@
 	    if (event.target == modal) {
 	        modal.style.display = "none";
 	    }
-	    modal = document.getElementById('footerModal');
-	    if (event.target == modal) {
-	        modal.style.display = "none";
-	    }
 	};
 	/* $(document).ready(function(){
 		var count = ${count};
@@ -52,29 +48,30 @@
 <body>
 
 <!-- Cards -->
+<div class="cards">
 <c:forEach var="cards" items="${cards }" varStatus="status" step="1">
 
 	<c:if test="${status.count%2!=0}">
 	<input type="radio" name="delete" style="float: left;" value="${cards.card_no }">
 	<div class='${cards.form_code }' style="float: left;" onclick="backward('${cards.id}', '${cards.card_no }')"><br>
-		<span>${cards.name }<br>${cards.com_name }<br>${cards.mem_level }</span><br>
-		<span>주소 : ${cards.addr} ${cards.zip } ${cards.addr_desc }
-		<br>홈페이지 주소 : ${cards.web_addr }</span><br>
-		<span>휴대전화 : ${cards.cel_tel }<br>
+		<div class="header">${cards.name }<br>${cards.com_name }<br>${cards.mem_level }</div>
+		<div class="content">주소 : ${cards.addr} ${cards.zip } ${cards.addr_desc }
+		<br>홈페이지 주소 : ${cards.web_addr }</div>
+		<div class="footer">휴대전화 : ${cards.cel_tel }<br>
 							회사전화 : ${cards.com_tel }<br>
-							email : ${cards.email }</span><br>
+							email : ${cards.email }</div>
 	</div>
 	</c:if>
 	
 	<c:if test="${status.count%2==0}">
 	<input type="radio" name="delete" style="float: left;" value="${cards.card_no }">
 	<div class='${cards.form_code }' style="float: left;" onclick="backward('${cards.id}', '${cards.card_no }')"><br>
-		<span>${cards.name }<br>${cards.com_name }<br>${cards.mem_level }</span><br>
-		<span>주소 : ${cards.addr} ${cards.zip } ${cards.addr_desc }
-		<br>홈페이지 주소 : ${cards.web_addr }</span><br>
-		<span>휴대전화 : ${cards.cel_tel }<br>
+		<div class="header">${cards.name }<br>${cards.com_name }<br>${cards.mem_level }</div>
+		<div class="content">주소 : ${cards.addr} ${cards.zip } ${cards.addr_desc }
+		<br>홈페이지 주소 : ${cards.web_addr }</div>
+		<div class="footer">휴대전화 : ${cards.cel_tel }<br>
 							회사전화 : ${cards.com_tel }<br>
-							email : ${cards.email }</span><br>
+							email : ${cards.email }</div>
 	</div>
 	<div style="clear: left;"></div>
 	<br>
@@ -85,6 +82,8 @@
 <div style="clear: left; margin-left: 68px;"></div>
 
 <input type="button" value="선택명함삭제" onclick="del()">
+</div>
+
 <!-- Cards end -->
 
 <!-- The Modal -->

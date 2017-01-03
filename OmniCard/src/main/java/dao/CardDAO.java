@@ -31,4 +31,14 @@ public class CardDAO extends SqlSessionDaoSupport  {
 		return getSqlSession().selectList("member.search", client_name);
 	}
 
+	public CardCommand getMyCard(String id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectOne("member.getmycard", id);
+	}
+
+	public void updateMyCard(CardCommand command) {
+		// TODO Auto-generated method stub
+		getSqlSession().update("member.updatemycard", command);
+	}
+
 }

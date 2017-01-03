@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/OmniCard/css/CardCSS.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -15,13 +18,10 @@ function search(){
 		,success:function(args){
 			var source;
 			var i = 0;
+			console.log(args.searchmem[1]);
 			for(i; i<args.searchmem.length; i++){
-				var array = new Array();
-				for(var source in args.searchmem[i]){
-					array.push(source);
-				}
-				document.getElementById('memlist').innerHTML='<a href=# onclick=ins('+array+')>'+args.searchmem[i].name+
-				'</a> '+args.searchmem[i].mem_level+' '+args.searchmem[i].com_name+'<hr>';
+				document.getElementById('memlist').innerHTML="<a href=# onclick=ins("+args.searchmem[i]+")>"+
+				args.searchmem[i].name+'</a> '+args.searchmem[i].mem_level+' '+args.searchmem[i].com_name+'<hr>';
 			}
 			for(i=1; i<=source/10; i++){
 				document.getElementById("memcount").innerHTML='<a href=#>'+i+'</a>';
@@ -30,15 +30,20 @@ function search(){
 	});
 }
 function ins(array){
-	console.log("yeah");
 	var i = 1;
 	for(var source in array){
 		document.getElementById(i).value=source;
 		i++;
 	}
 }
+window.onclick = function(event) {
+    modal = document.getElementById('footerModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
 </script>
-
+</head>
 <div class="footer_background">
 
 <hr>
@@ -47,7 +52,7 @@ function ins(array){
 <form action="insertcard.do" method="post">
 고객 성함 : <input type="text" id="name" name="name" size="5"/>
 		<img alt="돋보기" src="/OmniCard/image/magnifier.png" onclick="search()"><sub>검색기능으로 빠르게 정보를 입력해보세요.</sub>
-명함 디자인 : <select name="form_code">
+명함 코드 : <select name="form_code">
 			<option value="a">A</option>
 			<option value="b">B</option>
 			<option value="c">C</option>
@@ -74,7 +79,7 @@ function ins(array){
 		<input type="hidden" value="" name="card_no" id="card_no">
 		<!-- Modal header -->
 		<div class="modal_header">
-			<h1>검색결과</h1>
+			<h1 style="color: #ff4000; font-style: italic;">검색결과</h1>
 		</div>
 		<!-- Modal content -->
 		<div class="modal_content">
@@ -96,4 +101,4 @@ function ins(array){
 Copyright....
 </div>
 </div>
-<link rel="stylesheet" type="text/css" href="/OmniCard/css/CardCSS.css">
+</html>

@@ -1,4 +1,4 @@
-div{
+.cards{
 	transition: transform 1s ease;
 }
 .card_no{
@@ -10,20 +10,21 @@ div{
 	height: 240px;
 	border: black;
 	border-radius: 20px;
+	display: block;
+	margin: 0 auto;
 }
 .a:HOVER{
 	transform: rotateY(179deg);
 	content: url("/OmniCard/image/backward.jpg");
 }
-
-.a:first_child{
+.header{
+	text-align: left;
+}
+.content{
 	text-align: center;
 }
-.a:first_child+span{
+.footer{
 	text-align: right;
-}
-.a:first_child+span+span{
-	text-align: center;
 }
 
 .b{
@@ -32,40 +33,32 @@ div{
 	height: 240px;
 	border: black;
 	border-radius: 20px;
+	margin: 0 auto;
 }
 .b:HOVER{
 	transform: rotateY(179deg);
 	content: url("/OmniCard/image/backward.jpg");
 }
-.b .title{
-	text-align: left;
-}
-.b .body{
-	text-align: right;
-}
-.b .footer{
-	text-align: center;
-}
 
 .c{
 	background-image: ;
 	border: black;
+	margin: 0 auto;
 }
 .c:HOVER{
 	transform: rotateY(179deg);
 	content: url("/OmniCard/image/backward.jpg");
 }
-.c .title{
-	
-}
-.c .body{
-	
-}
-.c .footer{
-	
-}
 
 
+/*Footer CSS*/
+.footer_background{
+	height: 400px;
+    width: 100%;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    color: white;
+    opacity: 0.95;
+}
 
 /* The Modal (background) */
 .modal {
@@ -119,6 +112,8 @@ div{
     margin-right: 68.406px;
     border: 1px solid #888;
     background-color: white;
+    font-size: 2em;
+    font-style: italic;
 }
 /* Modal Content */
 .modal_content {
@@ -128,6 +123,14 @@ div{
     margin-right: 68.406px;
     border: 1px solid #888;
     background-color: white;
+}
+.modal_content:FIRST-CHILD{
+	margin: 0 auto;
+	color: black;
+}
+.modal_content:FIRST-CHILD div{
+	margin: 0 auto;
+	color: black;
 }
 /* Modal Footer */
 .modal_footer {

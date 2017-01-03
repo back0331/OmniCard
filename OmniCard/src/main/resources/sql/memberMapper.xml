@@ -17,9 +17,17 @@
 <insert id="register_mem" parameterType="command.MemberCommand">
 	insert into member values(member_seq.nextval,#{com_no},#{name},#{id},#{pw},#{home_tel},#{cel_tel},#{com_tel},#{email},sysdate)
 </insert>
-<select id="search" parameterType="String" resultType="Map">
+<select id="search" parameterType="String" resultType="command.CardCommand">
 	select * from card where name=#{client_name}
 </select>
+<select id="getmycard" parameterType="String" resultType="command.CardCommand">
+	select * from card where id=#{id}
+</select>
+<update id="updatemycard" parameterType="command.CardCommand">
+	update card set name=#{name},form_code=#{form_code},com_name=#{com_name},
+	mem_level=#{mem_level},web_addr=#{web_addr},cel_tel=#{cel_tel},com_tel=#{com_tel},
+	email=#{email},addr=#{addr},zip=#{zip},addr_desc=#{addr_desc} where id=#{id}
+</update>
 <select id="getAddress1" resultType="String">
 	select addr1 from address
 </select>

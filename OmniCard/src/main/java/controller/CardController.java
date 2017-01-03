@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +47,7 @@ public class CardController {
 	}
 
 	@RequestMapping("cardlist.do")
-	private String mycard(Model mod){
+	private String mycards(Model mod){
 		System.out.println(id);
 		mod.addAttribute("command", new CardCommand());
 		mod.addAttribute("cards", registerImpl.getAllCards(id));
@@ -85,4 +86,19 @@ public class CardController {
 		writer.println(object.toString());
 	}
 	
+	@RequestMapping("mycard.do")
+	private String mycard(Model mod){
+		CardCommand command = null;
+		command = impl.getMyCard(id, command);
+		mod.addAttribute("mycard", command);
+		mod.addAttribute("command", new CardCommand());
+		return "mycard";
+	}
+	
+	@RequestMapping("updateMyCard.do")
+	private String updateMyCard(@ModelAttribute("command")CardCommand command, Model mod){
+		impl.updateMyCard(id, command);
+		mod.addAttribute("command", new CardCommand());
+		return "mycard";
+	}
 }
