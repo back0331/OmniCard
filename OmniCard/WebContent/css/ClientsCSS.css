@@ -1,1 +1,13 @@
-@CHARSET "EUC-KR";
+@CHARSET "UTF-8";
+.search_table{
+	padding-left: 60px;
+}
+.client_table{
+	padding-left: 40px;
+}
+.client_tab_body{
+	display: null;
+}
+/* .client_tab_body_name:HOVER{ */
+/* 	content: url(""); */
+/* } */

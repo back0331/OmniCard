@@ -2,17 +2,20 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "-//mybatis.org//DTD Mapper 3.0//EN">
 <mapper namespace="myclients">
 
-<select id="getAllClients" parameterType="Map" resultType="command.ClientsCommand">
-	SELECT rownum,m.name,m.home_tel,m.cel_tel,m.com_tel,c.com_fax,m.email,c.com_name,
-	a.area_addr1,a.area_addr2,a.area_addr3,a.area_zip,a.area_desc,
-	a.road_addr1,a.road_addr2,a.road_addr3,a.road_no,a.road_desc FROM relation r 
-	inner join member m on r.client_id=m.id 
-	full outer join address a on a.com_no=m.com_no
-	full outer join company c on m.com_no=c.com_no 
-	where r.id=#{id} and #{pageNum2}>=rownum and rownum>=#{pageNum1}
-</select>
-<select id="getClientsCount" parameterType="String" resultType="int">
-	SELECT count(*) FROM relation WHERE mem_id=#{id}
-</select>
+	<select id="getAllClients" parameterType="Map"
+		resultType="command.ClientsCommand">
+		SELECT
+		rownum,m.name,m.home_tel,m.cel_tel,m.com_tel,c.com_fax,m.email,c.com_name,
+		a.area_addr1,a.area_addr2,a.area_addr3,a.area_zip,a.area_desc,
+		a.road_addr1,a.road_addr2,a.road_addr3,a.road_no,a.road_desc FROM
+		relation r
+		inner join member m on r.client_id=m.id
+		full outer join address a on a.com_no=m.com_no
+		full outer join company c on m.com_no=c.com_no
+		where r.id=#{id} and #{pageNum2}>=rownum and rownum>=#{pageNum1}
+	</select>
+	<select id="getClientsCount" parameterType="String" resultType="int">
+		SELECT count(*) FROM relation WHERE mem_id=#{id}
+	</select>
 
 </mapper>

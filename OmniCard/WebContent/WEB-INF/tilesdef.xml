@@ -21,10 +21,16 @@
 		<put-attribute name="title" value="Omnicard" />
 		<put-attribute name="body" value="/WEB-INF/Cards/mycards.jsp" />
 	</definition>
+	<definition name="mycards" extends="base_layout">
+		<put-attribute name="title" value="Omnicard" />
+		<put-attribute name="body" value="/WEB-INF/Cards/mycards.jsp" />
+	</definition>
+	
 	<definition name="mycard" extends="base_layout">
 		<put-attribute name="title" value="Omnicard" />
 		<put-attribute name="body" value="/WEB-INF/MyCard/mycard.jsp" />
 	</definition>
+	
 	<definition name="infoupdate" extends="base_layout">
 		<put-attribute name="title" value="Omnicard" />
 		<put-attribute name="body" value="/WEB-INF/MyInfo/infoupdate.jsp" />

@@ -13,7 +13,7 @@ import serviceImpl.RegisterImpl;
 public class RegisterDAO extends SqlSessionDaoSupport {
 
 	public RegisterImpl impl;
-	
+
 	public void setImpl(RegisterImpl impl) {
 		this.impl = impl;
 	}
@@ -23,44 +23,13 @@ public class RegisterDAO extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("member.login", info);
 	}
 
-	public void register_mem(MemberCommand command) {
+	public void register_mem(Object command) {
 		// TODO Auto-generated method stub
-		getSqlSession().insert("member.register_mem",command);
+		getSqlSession().insert("member.register_mem", command);
 	}
 
-	public List<String> getAddr1() {
-		// TODO Auto-generated method stub
-		List<String> address = new ArrayList<String>();
-		address = getSqlSession().selectList("member.getAddress1");
-		return address;
-	}
-	
-	public List<String> getAddr2() {
-		// TODO Auto-generated method stub
-		List<String> address = new ArrayList<String>();
-		address = getSqlSession().selectList("member.getAddress2");
-		return address;
-	}
-	
-	public List<String> getAddr3() {
-		// TODO Auto-generated method stub
-		List<String> address = new ArrayList<String>();
-		address = getSqlSession().selectList("member.getAddress3");
-		return address;
-	}
-
-	public Object getZip_code1() {
-		// TODO Auto-generated method stub
-		List<String> zip_code1 = new ArrayList<String>();
-		zip_code1 = getSqlSession().selectList("member.getZip_code1");
-		return null;
-	}
-
-	public Object getZip_code2() {
-		// TODO Auto-generated method stub
-		List<String> zip_code2 = new ArrayList<String>();
-		zip_code2 = getSqlSession().selectList("member.getZip_code1");
-		return null;
+	public void register_addr(Object command) {
+		getSqlSession().insert("member.register_addr", command);
 	}
 
 	public List<CardCommand> getAllCards(Map<String, Object> param) {

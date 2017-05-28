@@ -3,15 +3,42 @@
 <mapper namespace="myschedule">
 
 <select id="getSchedule" parameterType="map" resultType="command.ScheduleCommand">
-	select to_char(from_when,'MM-DD'),to_char(to_when,'MM-DD'),place,withwho 
-	from schedule 
-	where id=#{id} and to_char(from_when,'YYYYMM')=#{yearmonth} and to_char(from_when,'DD')>=#{day} 
-	order by from_when asc
-
+	select 
+		from_when
+		,to_when
+		,place
+		,with_who 
+	from 
+		schedule 
+	where 
+		id=#{id} 
+		and to_char(from_when,'yyyymm') = #{yearmonth} 
+		and to_char(from_when,'dd') >= #{day} 
+	order by 
+		from_when asc
 </select>
-<!-- select to_char(from_when,'MM-DD'),to_char(to_when,'MM-DD'),place,withwho 
-	from schedule 
-	where id='java1' and to_char(from_when,'YYYYMM')='201612' and to_char(from_when,'DD')>='09' 
-	order by from_when asc; -->
+
+<insert id="ins_schedule" parameterType="command.ScheduleCommand">
+	INSERT 
+		INTO scheudle
+	VALUES (
+		ADDRESS_SEQ.NEXTVAL
+			||'_'
+			||TO_CHAR(
+			  SYSDATE, 'yymmdd')
+			||((SELECT 
+				COUNT(*) 
+			  FROM 
+			  	SCHEDULE SUB_SCHE
+			  WHERE
+			  	SUB_SCHE.FROM_WHEN==#{from_when})+1)
+		,#{mem_no}
+		,#{from_when}
+		,#{to_when}
+		,#{place}
+		,#{with_who}
+		,SYSDATE
+		)
+</insert>
 	
 </mapper>

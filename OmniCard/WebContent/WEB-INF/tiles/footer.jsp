@@ -45,11 +45,10 @@ window.onclick = function(event) {
 </script>
 </head>
 <div class="footer_background">
-
 <hr>
 
 <div style="text-align: left">
-<form action="insertcard.do" method="post">
+<form action="insertcard.do" method="post" class="insertcard_form">
 고객 성함 : <input type="text" id="name" name="name" size="5"/>
 		<img alt="돋보기" src="/OmniCard/image/magnifier.png" onclick="search()"><sub>검색기능으로 빠르게 정보를 입력해보세요.</sub>
 명함 코드 : <select name="form_code">
@@ -74,7 +73,7 @@ window.onclick = function(event) {
 <!-- table needed : company, member, address -->
 
 <!-- The Modal -->
-<div id="footerModal" class="modal">
+<div id="footerModal" class="modal" style="display: none;">
 	<form method="post" action="send.do" class="form">
 		<input type="hidden" value="" name="card_no" id="card_no">
 		<!-- Modal header -->

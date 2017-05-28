@@ -1,9 +1,19 @@
+/*
+ * Description : 명함 style Attr(색, 모양 등) 관련 CSS
+ * Function : style Attr 넣기.
+ * Made At : 2017-05-09
+ */
 .cards{
-	transition: transform 1s ease;
+	margin: auto;
+	background: url("/OmniCard/image/horse.jpg"); 
+	background-position: center; 
+	background-repeat: no-repeat;
 }
 .card_no{
 	float: left;
 }
+
+/*CARD A*/
 .a{
 	background: url("/OmniCard/image/card1.jpg");
 	width: 460px;
@@ -12,10 +22,6 @@
 	border-radius: 20px;
 	display: block;
 	margin: 0 auto;
-}
-.a:HOVER{
-	transform: rotateY(179deg);
-	content: url("/OmniCard/image/backward.jpg");
 }
 .header{
 	text-align: left;
@@ -27,6 +33,7 @@
 	text-align: right;
 }
 
+/*CARD B*/
 .b{
 	background: url("/OmniCard/image/card2.jpg");
 	width: 460px;
@@ -35,21 +42,13 @@
 	border-radius: 20px;
 	margin: 0 auto;
 }
-.b:HOVER{
-	transform: rotateY(179deg);
-	content: url("/OmniCard/image/backward.jpg");
-}
 
+/*CARD C*/
 .c{
 	background-image: ;
 	border: black;
 	margin: 0 auto;
 }
-.c:HOVER{
-	transform: rotateY(179deg);
-	content: url("/OmniCard/image/backward.jpg");
-}
-
 
 /*Footer CSS*/
 .footer_background{
@@ -59,122 +58,6 @@
     color: white;
     opacity: 0.95;
 }
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation-name: fadeIn; /* Fade in the background */
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s
-}
-
-/* Modal Content */
-.mem_header {
-    padding: 20px;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    background-color: #5cb85c;
-    color: white;
-}
-/* Modal Content */
-.mem_content {
-    border: 20px;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    background-color: #5cb85c;
-}
-/* Modal Footer */
-.mem_footer {
-    padding: 20px;
-    background-color: #5cb85c;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    border-bottom: thick;
-    border-bottom-color: #000000;
-    color: white;
-}
-
-/* Modal memlist */
-.modal_header {
-    padding: 20px;
-    width: 50%;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    border: 1px solid #888;
-    background-color: white;
-    font-size: 2em;
-    font-style: italic;
-}
-/* Modal Content */
-.modal_content {
-	border: 20px;
-	width: 53%;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    border: 1px solid #888;
-    background-color: white;
-}
-.modal_content:FIRST-CHILD{
-	margin: 0 auto;
-	color: black;
-}
-.modal_content:FIRST-CHILD div{
-	margin: 0 auto;
-	color: black;
-}
-/* Modal Footer */
-.modal_footer {
-    padding: 20px;
-    width: 50%;
-    margin-left: 68.406px;
-    margin-right: 68.406px;
-    border-bottom: thick;
-    border: 1px solid #888;
-    background-color: white;
-}
-
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Add Animation */
-@-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0} 
-    to {bottom: 0; opacity: 1}
-}
-
-@keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
-}
-
-@-webkit-keyframes fadeIn {
-    from {opacity: 0} 
-    to {opacity: 1}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0} 
-    to {opacity: 1}
+.insertcard_form{
+	margin-left: 20px;
 }

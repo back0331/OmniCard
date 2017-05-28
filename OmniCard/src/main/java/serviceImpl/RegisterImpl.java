@@ -32,12 +32,13 @@ public class RegisterImpl implements RegisterService{
 			return null;
 		}
 	}
-	public void register_mem(MemberCommand command) {
+	public void register_mem(Object command, String mem_no, String com_no) {
 		// TODO Auto-generated method stub
-		if((command.getCom_no()).equals(null)){
-			command.setCom_no("");
+		if(command.getClass()==MemberCommand.class){
+			dao.register_mem(command);
+		}else if(command.getClass()==AddressCommand.class){
+			
 		}
-		dao.register_mem(command);
 	}
 
 	public List<CardCommand> getAllCards(String id) {

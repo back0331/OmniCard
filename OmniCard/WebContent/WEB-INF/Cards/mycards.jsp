@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" import="org.apache.taglibs.*"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/OmniCard/css/CardCSS.css">
+<link rel="stylesheet" type="text/css" href="/OmniCard/css/CardActionCSS.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -28,21 +29,15 @@
 		modal.style.display = "none";
 	}
 	window.onclick = function(event) {
+		var background = window;
 		var modal = document.getElementById('myModal');
 	    if (event.target == modal) {
-	        modal.style.display = "none";
+	    	event.target.style.display = "none";
+	    }
+	    if(event.target == background){
+	    	modal.style.display = 'none';
 	    }
 	};
-	/* $(document).ready(function(){
-		var count = ${count};
-		for(var i=1; count>=i; i++){
-			if(i==count){
-				$("#paging").append("<a href=>"+i+"</a>");
-			}else{
-				$("#paging").append("<a href=>"+i+"</a> |");
-			}
-		};
-	}); */
 </script>
 </head>
 <body>
@@ -81,6 +76,7 @@
 </c:forEach>
 <div style="clear: left; margin-left: 68px;"></div>
 
+<br/>
 <input type="button" value="선택명함삭제" onclick="del()">
 </div>
 

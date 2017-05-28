@@ -1,12 +1,11 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.AddressCommand;
-import command.CardCommand;
 import command.MemberCommand;
-import dao.RegisterDAO;
-import net.sf.json.JSONObject;
 import serviceImpl.RegisterImpl;
 
+@Configuration
+@EnableAsync
 @Controller
 public class RegisterController {
 
@@ -53,7 +51,9 @@ public class RegisterController {
 	//goto register view
 	@RequestMapping("/goRegister.do")
 	public String register(Model mod){
-		mod.addAttribute("command", new MemberCommand());
+		mod.addAttribute("mem_command", new MemberCommand());
+		mod.addAttribute("addr_home_command", new AddressCommand());
+		mod.addAttribute("addr_work_command", new AddressCommand());
 		//get addr1, addr2, addr3 and send it to drop_down_menu.
 		return "register";
 	}
@@ -61,12 +61,37 @@ public class RegisterController {
 	
 	
 	//register member
-	@RequestMapping("register.do")
-	public String register_mem(HttpServletRequest request, 
-			@ModelAttribute("command")MemberCommand command){
-		impl.register_mem(command);
+	@Async
+	@RequestMapping("/mem_register.do")
+	public void register(HttpServletRequest request, 
+			@ModelAttribute("mem_command")MemberCommand command,
+			@RequestParam(value="mem_no", defaultValue="")String mem_no,
+			@RequestParam(value="com_no", defaultValue="")String com_no){
+		impl.register_mem(command, mem_no, com_no);
+	}
+	
+	@Async
+	@RequestMapping("/addr_home_register.do")
+	public void addr_home_register(HttpServletRequest request, 
+			@ModelAttribute("addr_home_command")AddressCommand command,
+			@RequestParam(value="mem_no", defaultValue="")String mem_no,
+			@RequestParam(value="com_no", defaultValue="")String com_no){
+		impl.register_mem(command, mem_no, com_no);
+	}
+	
+	@RequestMapping("/addr_work_register.do")
+	public String addr_work_register(HttpServletRequest request, 
+			@ModelAttribute("addr_work_command")AddressCommand command,
+			@RequestParam(value="mem_no", defaultValue="")String mem_no,
+			@RequestParam(value="com_no", defaultValue="")String com_no){
+		impl.register_mem(command, mem_no, com_no);
 		HttpSession session = request.getSession();
 		session.setAttribute("check", "check");
 		return "login";
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(){
+		return "index";
 	}
 }

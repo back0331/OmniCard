@@ -37,9 +37,9 @@ public class InfoImpl {
 		// TODO Auto-generated method stub
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("id", id);
-		param.put("mem_addr", mem_address);
-		param.put("company", company);
-		param.put("com_addr", com_address);
+		param.put("addr_info", mem_address);
+		param.put("com_info", company);
+		param.put("mem_info", info);
 		if(info.getCom_no()==null){
 			info.setCom_no("");
 		}

@@ -2,53 +2,68 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "-//mybatis.org//DTD Mapper 3.0//EN">
 <mapper namespace="member"><!--로그인에 필요한 맵퍼 파일 -->
 
-<select id="login" parameterType="Map" resultType="String">
-	select mem_no from member where id=#{id} and pw=#{pw}
-</select>
-<select id="getAllCards" parameterType="map" resultType="command.CardCommand">
-	select rownum,r.card_no,c.id,c.com_no,c.name,c.form_code,c.com_name,c.mem_level,
-	c.web_addr,c.cel_tel,c.com_tel,c.email,c.addr,c.zip,c.addr_desc 
-	from relation r inner join card c on r.card_no=c.card_no 
-	where r.id=#{id} and r.card_no is not null and rownum>=#{startnum} and #{endnum}>=rownum
-</select>
-<select id="getCardsCount" parameterType="String" resultType="Integer">
-	select count(*) from card where owning=#{id}
-</select>
-<insert id="register_mem" parameterType="command.MemberCommand">
-	insert into member values(member_seq.nextval,#{com_no},#{name},#{id},#{pw},#{home_tel},#{cel_tel},#{com_tel},#{email},sysdate)
-</insert>
-<select id="search" parameterType="String" resultType="command.CardCommand">
-	select * from card where name=#{client_name}
-</select>
-<select id="getmycard" parameterType="String" resultType="command.CardCommand">
-	select * from card where id=#{id}
-</select>
-<update id="updatemycard" parameterType="command.CardCommand">
-	update card set name=#{name},form_code=#{form_code},com_name=#{com_name},
-	mem_level=#{mem_level},web_addr=#{web_addr},cel_tel=#{cel_tel},com_tel=#{com_tel},
-	email=#{email},addr=#{addr},zip=#{zip},addr_desc=#{addr_desc} where id=#{id}
-</update>
-<select id="getAddress1" resultType="String">
-	select addr1 from address
-</select>
-<select id="getAddress2" resultType="String">
-	select addr2 from address
-</select>
-<select id="getAddress3" resultType="String">
-	select addr3 from address
-</select>
+	<select id="login" parameterType="Map" resultType="String">
+		select mem_no from member where id=#{id} and pw=#{pw}
+	</select>
+	<select id="getAllCards" parameterType="map" resultType="command.CardCommand">
+		select
+		rownum,r.card_no,c.id,c.com_no,c.name,c.form_code,c.com_name,c.mem_level,
+		c.web_addr,c.cel_tel,c.com_tel,c.email,c.addr,c.zip,c.addr_desc
+		from relation r inner join card c on r.card_no=c.card_no
+		where r.id=#{id} and r.card_no is not null and rownum>=#{startnum} and
+		#{endnum}>=rownum
+	</select>
+	<select id="getCardsCount" parameterType="String" resultType="Integer">
+		select count(*) from card where owning=#{id}
+	</select>
+	<insert id="register_mem" parameterType="command.MemberCommand">
+		insert into member
+		values(member_seq.nextval,#{com_no},#{name},#{id},#{pw},#{home_tel},#{cel_tel},#{com_tel},#{email},sysdate)
+	</insert>
+	<select id="search" parameterType="String" resultType="command.CardCommand">
+		select * from card where name=#{client_name}
+	</select>
+	<select id="getmycard" parameterType="String" resultType="command.CardCommand">
+		select * from card where id=#{id}
+	</select>
+	<update id="updatemycard" parameterType="command.CardCommand">
+		update card 
+		<set>
+			<if test="name != null">name=#{name},</if>
+			<if test="form_code != null">form_code=#{form_code},</if>
+			<if test="com_name != null">com_name=#{com_name},</if>
+			<if test="mem_level != null">mem_level=#{mem_level},</if>
+			<if test="web_addr != null">web_addr=#{web_addr},</if>
+			<if test="cel_tel != null">cel_tel=#{cel_tel},</if>
+			<if test="com_tel != null">com_tel=#{com_tel},</if>
+			<if test="email != null">email=#{email},</if>
+			<if test="addr != null">addr=#{addr},</if>
+			<if test="zip != null">zip=#{zip},</if>
+			<if test="addr_desc != null">addr_desc=#{addr_desc}</if>
+		</set>
+		where id=#{id}
+	</update>
+	<select id="getAddress1" resultType="String">
+		select addr1 from address
+	</select>
+	<select id="getAddress2" resultType="String">
+		select addr2 from address
+	</select>
+	<select id="getAddress3" resultType="String">
+		select addr3 from address
+	</select>
 
-<insert id="sendcard" parameterType="command.MemoCommand">
-	insert into memo values(#{card_no},#{towho},#{fromwho},#{contents},sysdate)
-</insert>
-<insert id="insertcard1" parameterType="command.CardCommand">
-	insert into card values 
-	(card_seq.nextval,#{id},#{com_no},#{name},#{form_code},
-	#{com_name},#{mem_level},#{web_addr},#{cel_tel},#{com_tel},
-	#{email},#{addr},#{zip},#{addr_desc})
-</insert>
-<update id="insertcard2" parameterType="Map">
-	update card set owning=#{id} where id=#{cardid}
-</update>
+	<insert id="sendcard" parameterType="command.MemoCommand">
+		insert into memo values(#{card_no},#{towho},#{fromwho},#{contents},sysdate)
+	</insert>
+	<insert id="insertcard1" parameterType="command.CardCommand">
+		insert into card values
+		(card_seq.nextval,#{id},#{com_no},#{name},#{form_code},
+		#{com_name},#{mem_level},#{web_addr},#{cel_tel},#{com_tel},
+		#{email},#{addr},#{zip},#{addr_desc})
+	</insert>
+	<update id="insertcard2" parameterType="Map">
+		update card set owning=#{id} where id=#{cardid}
+	</update>
 
 </mapper>

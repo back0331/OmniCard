@@ -14,14 +14,41 @@
 </select>
 
 <update id="infoupdate" parameterType="map">
-	update (select distinct * from member m, address a, company c) set 
-		m.name='',m.pw='',m.home_tel='',m.com_tel='',m.email='',
-		a.area_addr1='',a.area_addr2='',a.area_addr3='',a.area_zip='',a.area_desc='',
-		a.road_addr1='',a.road_addr2='',a.road_addr3='',a.road_zip='',a.road_no='',a.road_desc='',
-		c.com_name='',c.ceo_name='',c.com_tel='',c.com_fax='' 
-	where m.mem_no='7' and (a.mem_no='7' || c.mem_no='7') and (a.com_no='7' || c.com_no='7');
+	UPDATE 
+		(SELECT 
+			DISTINCT * 
+		FROM 
+			member m INNER JOIN address a ON m.mem_no=#{mem_info.mem_no} and m.mem_no=a.mem_no
+			<if test="com_info.com_no!=null">INNER JOIN company c ON m.com_no=#{mem_info.mem_no} and m.com_no=c.com_no</if>) 
+	set 
+		<if test="mem_info.name!=null">m.name=#{mem_info.name}</if>
+		<if test="mem_info.pw!=null">,m.pw=#{mem_info.pw}</if>
+		<if test="mem_info.home_tel!=null">,m.home_tel=#{mem_info.home_tel}</if>
+		<if test="mem_info.com_tel!=null">,m.com_tel=#{mem_info.com_tel}</if>
+		<if test="mem_info.email!=null">,m.email=#{mem_info.email}</if>
+		<if test="addr_info.area_addr1!=null">,a.area_addr1=#{addr_info.area_addr1}</if>
+		<if test="addr_info.area_addr2!=null">,a.area_addr2=#{addr_info.area_addr2}</if>
+		<if test="addr_info.area_addr3!=null">,a.area_addr3=#{addr_info.area_addr3}</if>
+		<if test="addr_info.area_zip!=null">,a.area_zip=#{addr_info.area_zip}</if>
+		<if test="addr_info.area_desc!=null">,a.area_desc=#{addr_info.area_desc}</if>
+		<if test="addr_info.road_addr1!=null">,a.road_addr1=#{addr_info.road_addr1}</if>
+		<if test="addr_info.road_addr2!=null">,a.road_addr2=#{addr_info.road_addr2}</if>
+		<if test="addr_info.road_addr3!=null">,a.road_addr3=#{addr_info.road_addr3}</if>
+		<if test="addr_info.road_no!=null">,a.road_no=#{addr_info.road_no}</if>
+		<if test="addr_info.road_desc!=null">,a.road_desc=#{addr_info.road_desc}</if>
+		<if test="com_info.com_name!=null">,c.com_name=#{com_info.com_name}</if>
+		<if test="com_info.ceo_name!=null">,c.ceo_name=#{com_info.ceo_name}</if>
+		<if test="com_info.com_tel!=null">,c.com_tel=#{com_info.com_tel}</if>
+		<if test="com_info.com_fax!=null">,c.com_fax=#{com_info.com_fax}</if>
+	where 
+		<if test="mem_info.mem_no!=null">m.mem_no=#{mem_info.mem_no} </if> 
+		<if test="com_info.com_no!=null">
+			<if test="addr_info.com_no!=null">
+				and (a.com_no=#{com_info.com_no} or m.com_no=#{mem_info.com_no}) 
+			</if>
+		</if>
+		<if test="com_info.com_no!=null"> 
+		and (m.mem_no=#{mem_info.mem_no} or c.com_no=#{com_info.com_no}) 
+		</if>
 </update>
-
-<!-- info, com_addr, mem_addr, company  #{info.} #{com_addr.} #{mem_addr.} #{company.}-->
-
 </mapper>
